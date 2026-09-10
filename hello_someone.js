@@ -1,1 +1,2 @@
-print("Joker");
+Let nameToPrint = "Alex"
+print("Hello, " + nameToPrint)
