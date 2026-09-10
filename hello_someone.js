@@ -1,2 +1,2 @@
-Let nameToPrint = "Alex"
+let nameToPrint = "Alex"
 print("Hello, " + nameToPrint)
