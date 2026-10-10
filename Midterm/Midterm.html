@@ -14,7 +14,7 @@
 
      let x = w / 2, y = h / 2;
 
-     let d = 2;
+     let d = 2; // distance between circles
 
     function logicPro(){
         // background
@@ -67,7 +67,7 @@ let daw = prompt("What's your favorite DAW: Logic Pro , Ableton Live or Pro Tool
 
 if (daw && daw.trim().toLowerCase() === "logic pro" || daw && daw.trim().toLowerCase() === "logic") {
   logicPro();
-
+  
   canvas.addEventListener("click", () => {
     d = Math.random() * 20;
     logicPro();
