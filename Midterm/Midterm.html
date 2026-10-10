@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<body>
+    <canvas width="600" height="600" id="canvas" style="width: 600px; height: 600px;"></canvas>
+</body>
+
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const w = canvas.width, h = canvas.height;
+
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width *= dpr, canvas.height *= dpr;
+    ctx.scale(dpr, dpr);
+
+     let x = w / 2, y = h / 2;
+
+     let d = 2;
+
+    function logicPro(){
+        // background
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, w, h);
+
+        // contour
+        ctx.beginPath();
+        ctx.roundRect(0, 0, w - 1, h - 1);
+        ctx.lineWidth = 15;
+        ctx.strokeStyle = "#D7E9F3";
+        ctx.stroke();
+
+        // outer circles
+        for(let i = 0; i < 165; i++){
+            let r = d + i;
+            ctx.beginPath();
+            ctx.arc(
+                x,
+                y,
+                250 - r, // 250 - 165 + 2 = 85
+                0,
+                Math.PI * 2,
+                true)
+            ctx.lineWidth = 1;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = "#DFEAF4";
+            ctx.stroke();
+        }
+
+        // inner circles
+        for(let i = 0; i < 70; i++){
+                let r = d + i;
+                ctx.beginPath();
+                ctx.arc(
+                    x,
+                    y,
+                    85 - r,
+                    0,
+                    Math.PI * 2,
+                    true)
+                ctx.lineWidth = 1;
+                ctx.lineCap = "round";
+                ctx.strokeStyle = "#798598";
+                ctx.stroke();
+        }
+    }
+
+let daw = prompt("What's your favorite DAW: Logic Pro , Ableton Live or Pro Tools");
+
+if (daw && daw.trim().toLowerCase() === "logic pro" || daw && daw.trim().toLowerCase() === "logic") {
+  logicPro();
+
+  canvas.addEventListener("click", () => {
+    d = Math.random() * 20;
+    logicPro();
+  });
+} else {
+  alert("Please choose Logic Pro");
+}
+    
+
+</script>
