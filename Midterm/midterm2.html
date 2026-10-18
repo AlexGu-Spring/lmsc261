@@ -85,46 +85,17 @@
   
   
     let daw = prompt("What's your favorite DAW: Logic Pro , Ableton Live or Pro Tools");
+    
     if (daw && daw.trim().toLowerCase() === "logic pro" || daw && daw.trim().toLowerCase() === "logic") {
+  logicPro();
+  
+  canvas.addEventListener("click", () => {
+    d = Math.random() * 20;
     logicPro();
-
-    canvas.addEventListener("mousedown", (event) => {
-    const rect = canvas.getBoundingClientRect();
-    const mouseX = event.clientX - rect.left;
-    const mouseY = event.clientY - rect.top;
-
-    // mouse distance to inner circle
-    const dx = mouseX - innerX;
-    const dy = mouseY - innerY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-
-    if (distance <= 85 - d) {
-        dragging = true;
-        offsetX = dx;
-        offsetY = dy;
-    }
   });
-
-  // mousemove
-  window.addEventListener("mousemove", (event) => {
-      if (dragging) {
-          const rect = canvas.getBoundingClientRect();
-          const mouseX = event.clientX - rect.left;
-          const mouseY = event.clientY - rect.top;
-
-          innerX = mouseX - offsetX;
-          innerY = mouseY - offsetY;
-      }
-  });
-
-  // mouseup
-  window.addEventListener("mouseup", () => {
-      dragging = false;
-  });
-      
-    } else {
-      alert("Please choose Logic Pro");
-    }
+} else {
+  alert("Please choose Logic Pro");
+}
   
 
 </script>
